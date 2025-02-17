@@ -50,7 +50,7 @@
                                     <p class="card-text">${book.category}</p>
                                     <p class="card-text">${bookPrice}</p>
                                     <button class="btn btn-primary add-to-cart" data-id="${book.asin}" data-title="${bookTitle}" data-price="${book.price || 0}">Aggiungi al carrello</button>
-                                    <button class="btn btn-danger delete-product" data-id="${book.asin}">Elimina</button>
+                                    <button class="btn btn-danger delete-product" data-id="${book.asin}">Saltare</button>
                                 </div>
                             </div>
                         </div>
@@ -76,13 +76,7 @@
                 $('#cart').append(`<li class="list-group-item">${title}</li>`);
             });
 
-            $(document).on('click', '.delete-product', function() {
-                const productId = $(this).data('id');
-                fetch(`${baseUrl}/${productId}`, { method: 'DELETE' })
-                    .then(response => response.json())
-                    .then(() => fetchBooks())
-                    .catch(error => console.error("Errore durante l'eliminazione:", error));
-            });
+            
         });
     </script>
 </body>
